@@ -1,0 +1,265 @@
+//INSERTION FROM FRONT
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int info;
+    Node* prev;
+    Node* next;
+};
+
+Node* front = NULL;
+Node* rear = NULL;
+
+void insertFront(int x) {
+    Node* newNode = new Node();
+    newNode->info = x;
+
+    if (front == NULL) {
+        // Empty deque
+        newNode->prev = NULL;
+        newNode->next = NULL;
+
+        front = rear = newNode;
+    }
+    else {
+        // Insert before current front
+        newNode->prev = NULL;
+        newNode->next = front;
+
+        front->prev = newNode;
+        front = newNode;
+    }
+}
+
+//INSERTION FROM REAR
+void insertRear(int x) {
+    Node* newNode = new Node();
+    newNode->info = x;
+
+    if (front == NULL) {
+        // Empty deque
+        newNode->prev = NULL;
+        newNode->next = NULL;
+
+        front = rear = newNode;
+    }
+    else {
+        // Insert after current rear
+        newNode->prev = rear;
+        newNode->next = NULL;
+
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+//DELETION FROM FRONT 
+void deleteFront()
+{
+    Node* temp = front;
+
+    if (front == NULL)
+    {
+        cout << "Deque is empty";
+    }
+    else if (front == rear)   // only one node
+    {
+        front = rear = NULL;
+        delete temp;
+    }
+    else
+    {
+        front = front->next;
+        front->prev = NULL;
+        delete temp;
+    }
+}
+
+//DELETION FROM REAR
+void deleteRear()
+{
+    Node* temp = rear;
+
+    if (front == NULL)
+    {
+        cout << "Deque is empty";
+    }
+    else if (front == rear)   // only one node
+    {
+        front = rear = NULL;
+        delete temp;
+    }
+    else
+    {
+        rear = rear->prev;
+        rear->next = NULL;
+        delete temp;
+    }
+}
+
+// WHOLE CODE
+#include <iostream>
+using namespace std;
+
+class Node
+{
+public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int value)
+    {
+        data = value;
+        next = NULL;
+        prev = NULL;
+    }
+};
+
+class Deque
+{
+private:
+    Node* front;
+    Node* rear;
+
+public:
+
+    Deque()
+    {
+        front = NULL;
+        rear = NULL;
+    }
+
+    // Insertion from Front
+    void insertFront(int value)
+    {
+        Node* newNode = new Node(value);
+
+        if (front == NULL)
+        {
+            front = rear = newNode;
+        }
+        else
+        {
+            newNode->next = front;
+            front->prev = newNode;
+            front = newNode;
+        }
+    }
+
+    // Insertion from Rear
+    void insertRear(int value)
+    {
+        Node* newNode = new Node(value);
+
+        if (rear == NULL)
+        {
+            front = rear = newNode;
+        }
+        else
+        {
+            newNode->prev = rear;
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+
+    // Deletion from Front
+    void deleteFront()
+    {
+        if (front == NULL)
+        {
+            cout << "Deque is empty" << endl;
+            return;
+        }
+
+        Node* temp = front;
+
+        // Only one node
+        if (front == rear)
+        {
+            front = rear = NULL;
+        }
+        else
+        {
+            front = front->next;
+            front->prev = NULL;
+        }
+
+        delete temp;
+    }
+
+    // Deletion from Rear
+    void deleteRear()
+    {
+        if (rear == NULL)
+        {
+            cout << "Deque is empty" << endl;
+            return;
+        }
+
+        Node* temp = rear;
+
+        // Only one node
+        if (front == rear)
+        {
+            front = rear = NULL;
+        }
+        else
+        {
+            rear = rear->prev;
+            rear->next = NULL;
+        }
+
+        delete temp;
+    }
+
+    // Display from Front
+    void display()
+    {
+        if (front == NULL)
+        {
+            cout << "Deque is empty" << endl;
+            return;
+        }
+
+        Node* temp = front;
+
+        cout << "Deque: ";
+
+        while (temp != NULL)
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+
+        cout << endl;
+    }
+};
+
+int main()
+{
+    Deque dq;
+
+    dq.insertFront(20);
+    dq.insertFront(10);
+    dq.insertRear(30);
+    dq.insertRear(40);
+
+    dq.display();
+
+    dq.deleteFront();
+    dq.display();
+
+    dq.deleteRear();
+    dq.display();
+
+    dq.deleteFront();
+    dq.display();
+
+    dq.deleteRear();
+    dq.display();
+
+    return 0;
+}
