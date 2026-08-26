@@ -11,6 +11,7 @@ public:
     }
     
     int pop() {
+
         if (s2.empty()) {
             while (!s1.empty()) {
                 s2.push(s1.top());
@@ -24,6 +25,7 @@ public:
     }
     
     int peek() {
+    
         if (s2.empty()) {
             while (!s1.empty()) {
                 s2.push(s1.top());
