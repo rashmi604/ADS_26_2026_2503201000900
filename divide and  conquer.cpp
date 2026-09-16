@@ -84,3 +84,5 @@ int main()
 
     return 0;
 }
+
+// in exam quick sort and merge sort are compulsory
