@@ -21,6 +21,7 @@ void merge(int A[], int p, int q, int r)
 
     // Merge the two sorted arrays
     while (i < n1 && j < n2)
+    
     {
         if (L[i] <= R[j])
         {
