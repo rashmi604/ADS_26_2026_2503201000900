@@ -68,6 +68,7 @@ void mergeSort(int A[], int p, int r)
 }
 
 int main()
+
 {
     int A[] = {38, 27, 43, 3, 9, 82, 10};
     int n = sizeof(A) / sizeof(A[0]);
