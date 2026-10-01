@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
 
-// Structure for a binary tree node[span_1](start_span)[span_1](end_span)
+// Structure for a binary tree node
 struct Node {
     int data;
     Node *left;
     Node *right;
 };
 
-// Function to create the binary tree recursively[span_2](start_span)[span_2](end_span)
+// Function to create the binary tree recursively
 Node* create() {
     int x;
     Node *newNode = new Node();
@@ -31,7 +31,7 @@ Node* create() {
     return newNode;
 }
 
-// Preorder traversal (Root -> Left -> Right)[span_3](start_span)[span_3](end_span)
+// Preorder traversal (Root -> Left -> Right)
 void preorder(Node* root) {
     if (root == NULL) return;
     cout << root->data << " ";
@@ -39,7 +39,7 @@ void preorder(Node* root) {
     preorder(root->right);
 }
 
-// Inorder traversal (Left -> Root -> Right)[span_4](start_span)[span_4](end_span)
+// Inorder traversal (Left -> Root -> Right)
 void inorder(Node* root) {
     if (root == NULL) return;
     inorder(root->left);
@@ -47,7 +47,7 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
-// Postorder traversal (Left -> Right -> Root)[span_5](start_span)[span_5](end_span)
+// Postorder traversal (Left -> Right -> Root)
 void postorder(Node* root) {
     if (root == NULL) return;
     postorder(root->left);
@@ -55,21 +55,21 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
-// Main function[span_6](start_span)[span_6](end_span)
+// Main function
 int main() {
     Node *root = NULL;
     
     cout << "--- Binary Tree Creation ---\n";
-    root = create();[span_7](start_span)[span_7](end_span)
+    root = create();
     
     cout << "\nPreorder Traversal: ";
-    preorder(root);[span_8](start_span)[span_8](end_span)
+    preorder(root);
     
     cout << "\nInorder Traversal: ";
-    inorder(root);[span_9](start_span)[span_9](end_span)
+    inorder(root);
     
     cout << "\nPostorder Traversal: ";
-    postorder(root);[span_10](start_span)[span_10](end_span)
+    postorder(root);
     
     cout << endl;
     return 0;
